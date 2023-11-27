@@ -64,14 +64,19 @@ function generateCalenderFromMonth() {
     let currentMonth = date.getMonth();
     {
         firstOfThisMonth.setDate(1);
-        if (firstOfThisMonth.getDay() != 1) {
-            let daysAgoTillMonday = 1 - firstOfThisMonth.getDay();
+        let firstDay = firstOfThisMonth.getDay();
+        console.log(firstDay);
+        if (firstDay != 1) {
+            if (firstDay == 0) {
+                firstDay = 7;
+            }
+            let daysAgoTillMonday = 1 - firstDay;
             dateOnCalender.setDate(firstOfThisMonth.getDate() + daysAgoTillMonday);
         }
     }
 
     //Create the table
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         const tableRow = table.insertRow();
         for (let j = 0; j < 7; j++) {
             const tableEntry = tableRow.insertCell();
