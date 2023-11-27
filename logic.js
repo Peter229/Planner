@@ -67,7 +67,6 @@ function generateCalenderFromMonth() {
     {
         firstOfThisMonth.setDate(1);
         let firstDay = firstOfThisMonth.getDay();
-        console.log(firstDay);
         if (firstDay != 1) {
             if (firstDay == 0) {
                 firstDay = 7;
