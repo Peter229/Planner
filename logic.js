@@ -2,9 +2,12 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 const suffix = ["st", "nd", "rd", "th"];
 
 //Why is Sunday day 0?
+//Store which month we are currently looking at
 var g_currentlyViewMonthOffset = 0;
+//Store which days we have selected
 var g_clickedElements = new Set();
 
+//Run when we first get on the website
 function generateCalender() {
 
     let date = new Date;
@@ -20,6 +23,7 @@ function generateCalender() {
     generateCalenderFromMonth();
 }
 
+//Increment and decrement month based on which button we press
 function nextMonth() {
 
     g_currentlyViewMonthOffset += 1;
@@ -32,7 +36,8 @@ function previousMonth() {
     generateCalenderFromMonth();
 }
 
-function generateCalenderFromMonth(month) {
+//Generates a calender for a month
+function generateCalenderFromMonth() {
 
     destroyChildren(document.getElementById("Calender"));
 
@@ -95,6 +100,7 @@ function generateCalenderFromMonth(month) {
     setUpClickableElements();
 }
 
+//Used to remove the old calender when switching months
 function destroyChildren(node) {
 
     for (let i = node.childElementCount; i >= 0; i--) {
@@ -102,11 +108,13 @@ function destroyChildren(node) {
     }
 }
 
+//Used to determin the suffix to the date
 function getDigit(number, n) {
 
     return Math.floor((number / Math.pow(10, n - 1)) % 10);
 }
 
+//Rerun this everytime we update the calender
 function setUpClickableElements() {
 
     $("td").click(function() {
