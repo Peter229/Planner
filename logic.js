@@ -41,6 +41,8 @@ function generateCalenderFromMonth() {
 
     destroyChildren(document.getElementById("Calender"));
 
+    let currentDate = new Date;
+
     let date = new Date;
     date.setMonth(date.getMonth() + g_currentlyViewMonthOffset);
 
@@ -83,6 +85,9 @@ function generateCalenderFromMonth() {
             tableEntry.appendChild(document.createTextNode(dateOnCalender.getDate()));
             if (dateOnCalender.getMonth() != currentMonth) {
                 tableEntry.style = "background-color: grey; pointer-events: none; user-select: none;";
+            }
+            else if (currentDate > dateOnCalender) {
+                tableEntry.style = "background-color: lightgrey; pointer-events: none; user-select: none;";
             }
             else {
                 dateOnCalender.setHours(12);
