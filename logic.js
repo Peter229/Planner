@@ -1,5 +1,5 @@
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const suffix = ["st", "nd", "rd", "th"];
+const c_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const c_suffix = ["st", "nd", "rd", "th"];
 
 //Why is Sunday day 0?
 //Store which month we are currently looking at
@@ -15,7 +15,7 @@ function generateCalender() {
     document.getElementById("CurrentDate").innerHTML += date.toLocaleString("default", {day: "numeric"});
     {
         let furthestRightDigit = Math.min(getDigit(date.getDate(), 1), 4) - 1;
-        document.getElementById("CurrentDate").innerHTML += suffix[furthestRightDigit] + " ";
+        document.getElementById("CurrentDate").innerHTML += c_suffix[furthestRightDigit] + " ";
     }
     document.getElementById("CurrentDate").innerHTML += date.toLocaleString("default", {weekday: "long"}) + " ";
     document.getElementById("CurrentDate").innerHTML += date.toLocaleString("default", {year: "numeric"}) + " ";
@@ -53,10 +53,10 @@ function generateCalenderFromMonth() {
     //Adding days to the table
     {
         const tableRow = table.insertRow();
-        for (let i = 0; i < days.length; i++) {
+        for (let i = 0; i < c_days.length; i++) {
             const tableEntry = tableRow.insertCell();
             tableEntry.style = "pointer-events: none; user-select: none;"
-            tableEntry.appendChild(document.createTextNode(days[i]));
+            tableEntry.appendChild(document.createTextNode(c_days[i]));
         }
     }
 
